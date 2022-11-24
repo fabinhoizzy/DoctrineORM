@@ -40,8 +40,11 @@ class EntityManagerCreator
         );
 
         $conn = [
-            'driver' => 'pdo_sqlite',
-            'path' => __DIR__ . '/../../db.sqlite',
+            'driver' => 'pdo_mysql',
+            'host' => '127.0.0.1',
+            'dbname' => 'Student',
+            'user' => 'root',
+            'password' => 'root'
         ];
 
         return EntityManager::create($conn, $config);
