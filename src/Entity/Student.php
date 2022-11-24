@@ -10,8 +10,9 @@ use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\OneToMany;
+use Fabio\Doctrine\Repository\DoctrineStudentRepository;
 
-#[Entity]
+#[Entity(repositoryClass: DoctrineStudentRepository::class)]
 
 class Student
 {
@@ -23,7 +24,8 @@ class Student
     #[OneToMany(
         mappedBy: "student",
         targetEntity: Phone::class,
-        cascade: ["persist", "remove"]
+        cascade: ["persist", "remove"],
+        fetch: 'EAGER'
     )]
     private Collection $phones;
 
